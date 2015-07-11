@@ -86,7 +86,7 @@ var state = {
 	eventListenerContext: null
 };
 
-function releaseModalFocus(newFocusElement) {
+function releaseModalFocus(focusElement) {
 	var eventListenerContext = state.eventListenerContext;
 	var eventListenerArguments = state.eventListenerArguments;
 
@@ -98,8 +98,8 @@ function releaseModalFocus(newFocusElement) {
 	state.eventListenerContext = null;
 	state.eventListenerArguments = null;
 
-	if (newFocusElement) {
-		newFocusElement.focus();
+	if (focusElement) {
+		focusElement.focus();
 	}
 }
 
