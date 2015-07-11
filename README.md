@@ -37,4 +37,4 @@ This function should be used when closing a modal dialog.
 
 ## License
 
-Focus Manager is licensed onder the ISC license. See [the license file](LICENSE) for details.
+Focus Manager is licensed under the ISC license. See [the license file](LICENSE) for details.
