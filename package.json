@@ -1,0 +1,28 @@
+{
+  "name": "focus-manager",
+  "version": "0.0.0",
+  "description": "Focus management for modal dialogs made easy",
+  "main": "focusManager.js",
+  "mainMinified": "focusManager.min.js",
+  "mainModuleName": "focusManager",
+  "directories": {
+    "test": "test",
+    "source": "source"
+  },
+  "scripts": {
+    "test": "gulp test"
+  },
+  "author": "Isaac Andela",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sourcemaps": "^1.5.2",
+    "gulp-uglify": "^1.2.0",
+    "gulp-umd": "^0.2.0",
+    "jasmine-core": "^2.2.0",
+    "karma": "^0.12.31",
+    "karma-jasmine": "^0.3.5",
+    "karma-phantomjs-launcher": "^0.1.4"
+  }
+}

@@ -1,2 +1,4 @@
-# focus-manager
-Accessibility: focus management made easy
+# captureModalFocus
+
+_Focus management for modal dialogs made easy_
+
