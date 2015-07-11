@@ -35,6 +35,6 @@ Optionally a `focusElement` can be provided. This element will receive focus whe
 This function should be used when closing a modal dialog.
 
 
-## Licence
+## LicenSe
 
-Focus Manager is licenced onder the ISC licence. See [the licence file](LICENCE) for details.
+Focus Manager is licenSed onder the ISC licenSe. See [the licenSe file](LICENSE) for details.
