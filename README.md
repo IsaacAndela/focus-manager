@@ -1,4 +1,12 @@
-# captureModalFocus
+# Focus manager
 
-_Focus management for modal dialogs made easy_
+_Accessible focus management made easy_
 
+## What is this?
+
+[TODO]
+
+
+## Documentation
+
+[TODO]
