@@ -12,6 +12,12 @@
   "scripts": {
     "test": "gulp test"
   },
+  "files": [
+    "focusManager.js",
+    "focusManager.min.js",
+    "LICENCE",
+    "README.md"
+  ],
   "author": "Isaac Andela",
   "license": "ISC",
   "devDependencies": {
