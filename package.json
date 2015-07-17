@@ -1,6 +1,6 @@
 {
   "name": "focus-manager",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Focus management for modal dialogs made easy",
   "main": "focusManager.js",
   "mainMinified": "focusManager.min.js",
