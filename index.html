@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Focus Manager</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<main>
+		<article>
+			<header class="pageHeader">
+				<h1 class="pageTitle">Focus Manager</h1>
+				<p class="payoff">Accessible focus management made easy</p>
+			</header>
+			<section>
+				<h2 class="sectionTitle">What is Focus Manager? ❡❧</h2>
+				<p>This is a small Javascript library to help you with focus management for modal dialogs and other content that is opened in the page. How you open or close these dialogs and other content is up to you, this library is just here to help you make your dialogs more accessible for keyboard users.</p>
+			</section>
+			<section>
+				<h2 class="sectionTitle">Examples</h2>
+
+				<section>
+					<h3 class="subsectionTitle">Opening a modal dialog</h3>
+					<p>The first example is here to demonstrate the problem. It is all to easy to loose where the focus is without it being properly managed. Try it out.</p>
+					<div class="buttons buttons--spacious">
+						<button data-open-modal-dialog-without>Open modal dialog <em>without</em> focus capture</button>
+					</div>
+					<p>This example shows how focus can be managed effectively. See for yourself how much nicer it is.</p>
+					<div class="buttons buttons--spacious">
+						<button data-open-modal-dialog>Open modal dialog <em>with</em> focus capture</button>
+					</div>
+
+					<code>
+<pre>var openedClass = "is-opened";
+
+var openButton = document.querySelector("[data-open-modal-dialog]");
+var closeButton = document.querySelectorAll("[data-close-modal-dialog]");
+var dialog = document.querySelector("[data-dialog]");
+
+<span class="codeComment">// Listen for clicks on the open button</span>
+openButton.addEventListener("click", function (evnt) {
+	<span class="codeComment">// How you open the dialog is
+	// your own concern
+	// for simplicity's sake a class is
+	// added in this example</span>
+	dialog.classList.add(openedClass);
+
+	<span class="codeComment">// After the dialog gets shown
+	// make sure only elements inside
+	// the dialog can be focused</span>
+	<span class="highlightCode">focusManager.capture(dialog);</span>
+});
+
+<span class="codeComment">// Listen for clicks on the close button</span>
+closeButton.addEventListener("click", function (evnt) {
+	<span class="codeComment">// How you close the dialog is
+	// your own concern
+	// for simplicity's sake a class is
+	// removed in this example</span>
+	dialog.classList.remove(openedClass);
+
+	<span class="codeComment">// After the dialog gets closed
+	// focus should resume to work as
+	// normal so the focus capture is released
+	// openButton is supplied as an argument
+	// so that it will receive focus after
+	// the dialog has been closed</span>
+	<span class="highlightCode">focusManager.release(openButton);</span>
+});</pre>
+					</code>
+					<section role="dialog" data-dialog-without class="modalDialog">
+						<div class="modalDialog-content">
+							<h4 class="sectionTitle">Oh, hi</h4>
+
+							<p>Try tabbing thought and see how easy it is to loose where your focus is. This is very annoying for keyboard users. Help them out and use Focus Manager.</p>
+							<div class="buttons">
+
+								<button data-close-modal-dialog-without>Ok</button>
+								<button data-close-modal-dialog-without>Cancel</button>
+							</div>
+						</div>
+					</section>
+					<section role="dialog" data-dialog class="modalDialog">
+						<div class="modalDialog-content">
+							<h4 class="sectionTitle">Hi there</h4>
+
+							<p>Try tabbing thought, focus stays within the dialog. after closing it with one of the buttons below, the focus will return to the open button.</p>
+							<div class="buttons">
+
+								<button data-close-modal-dialog>Ok</button>
+								<button data-close-modal-dialog>Cancel</button>
+							</div>
+						</div>
+					</section>
+				</section>
+			</section>
+			<section>
+				<h2 class="sectionTitle">Documentation</h2>
+			</section>
+		</article>
+	</main>
+	<script src="node_modules/focus-manager/focusManager.js"></script>
+	<script src="examples.js"></script>
+</body>
+</html>

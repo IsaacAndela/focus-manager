@@ -1,0 +1,192 @@
+html {
+	font-size: 118.75%;
+}
+
+body {
+	font-family: georgia, serif;
+	max-width: 40em;
+	line-height: 1.6;
+	margin: 0 auto;
+	padding: 0 1em;
+	display: block;
+	color: hsl(0, 0%, 30%);
+}
+
+p {
+	margin: 0;
+}
+
+p + p {
+	text-indent: 1em;
+}
+
+:focus {
+	outline-color: hsl(0, 0%, 0%);
+	outline-width: 2px;
+}
+
+.pageHeader {
+	position: relative;
+	margin-bottom: 1em;
+	padding: 5em 0;
+	border-top: 3px double hsl(0, 0%, 20%);
+	border-bottom: 3px double hsl(0, 0%, 20%);
+	max-width: 18em;
+	margin: 9em auto;
+}
+
+.pageHeader::before,
+.pageHeader::after {
+	position: absolute;
+	content: "❧";
+	left: 50%;
+	margin-left: -0.5em;
+	font-size: 2em;
+	text-align: center;
+	width: 1em;
+	background: hsl(0, 100%, 100%);
+	color: hsl(0, 85%, 50%);
+	line-height: 0.7;
+	margin-bottom: -0.36em;
+}
+
+.pageHeader::before {
+	top: 0;
+	margin-top: -0.4em;
+	transform: scaleX(-1);
+}
+
+.pageHeader::after {
+	bottom: 0;
+	margin-bottom: -0.36em;
+}
+
+
+.pageTitle,
+.sectionTitle,
+.subsectionTitle {
+	line-height: 1.2;
+	text-align: center;
+	color: hsl(0, 0%, 20%);
+}
+
+.pageTitle {
+	font-size: 1.2em;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	text-align: center;
+	font-weight: normal;
+	margin: 0;
+}
+
+.sectionTitle {
+	font-size: 0.8em;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	font-weight: normal;
+	color: hsl(0, 85%, 50%);
+	margin: 4em 0 2em 0;
+}
+
+.subsectionTitle {
+	font-size: 1em;
+	font-weight: normal;
+	font-style: italic;
+	color: hsl(0, 85%, 50%);
+}
+
+.payoff {
+	font-family: georgia, serif;
+	font-style: italic;
+	font-size: 0.8em;
+	text-align: center;
+	color: hsl(0, 85%, 50%);
+	margin: 0.5em 0 0 0;
+}
+
+.buttons {
+	display: flex;
+	justify-content: space-between;
+	margin: 1.6em auto;
+	max-width: 9em;
+	flex-wrap: wrap;
+}
+
+.buttons--spacious {
+	margin: 1.6em auto 3.2em auto;
+	max-width: 20em;
+}
+
+button {
+	font-size: 0.65em;
+	font-family: georgia, serif;
+
+	color: white;
+	text-transform: uppercase;
+	letter-spacing: 0.07em;
+	color: hsl(0, 85%, 50%);
+	margin: 0 auto;
+
+	border: none;
+	background: none;
+	cursor: pointer;
+}
+
+button::after {
+	content: "➸";
+	margin-left: 0.3em;
+	display: inline-block;
+	transition: transform 0.1s;
+}
+
+button:hover::after,
+button:focus::after {
+	transform: translateX(3px);
+}
+
+.modalDialog {
+	display: none;
+	background-color: hsla(0, 0%, 100%, 0.92);
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	transition: opacity 0.3s;
+}
+
+.modalDialog.is-opened {
+	display: flex;
+}
+
+.modalDialog-content {
+	max-width: 20em;
+	padding: 2em 3em;
+}
+
+.highlightCode {
+	color: hsl(0, 85%, 50%);
+}
+
+.codeComment {
+	color: hsl(0, 0%, 46%);
+}
+
+code > pre {
+	margin: 3.5em 0;
+	padding: 2em 0;
+	overflow-x: auto;
+	border: 1px hsl(0, 0%, 20%);
+	border-style: solid none;
+}
+
+@media (min-width: 40em) {
+	code > pre {
+		margin-left: 10%;
+		margin-right: 10%;
+	}
+
+}

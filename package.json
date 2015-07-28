@@ -1,0 +1,23 @@
+{
+  "name": "focus-manager-gh-pages",
+  "version": "0.0.0",
+  "description": "examples and docs for focus-manager",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://IsaacAndela@github.com/IsaacAndela/focus-manager.git"
+  },
+  "private": true,
+  "author": "Isaac Andela",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IsaacAndela/focus-manager/issues"
+  },
+  "homepage": "https://github.com/IsaacAndela/focus-manager#readme",
+  "dependencies": {
+    "focus-manager": "^0.1.1"
+  }
+}
