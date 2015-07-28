@@ -248,7 +248,7 @@ describe("captureModalFocus", function () {
 
 			appendToBody(root);
 			callback = function () {};
-			spyOn(window, "removeEventListener");
+			spyOn(document, "removeEventListener");
 		});
 
 		afterEach(function () {
@@ -263,7 +263,7 @@ describe("captureModalFocus", function () {
 		});
 
 		it("should reset the state object", function () {
-			state.eventListenerContext = window;
+			state.eventListenerContext = document;
 			state.eventListenerArguments = ["focus"];
 			releaseModalFocus();
 
@@ -272,12 +272,12 @@ describe("captureModalFocus", function () {
 
 		it("remove the event listener that is in the state object", function () {
 
-			state.eventListenerContext = window;
+			state.eventListenerContext = document;
 			state.eventListenerArguments = ["focus", callback, true];
 			releaseModalFocus();
 
 			expect(state).toEqual(defaultState);
-			expect(window.removeEventListener).toHaveBeenCalledWith("focus", callback, true);
+			expect(document.removeEventListener).toHaveBeenCalledWith("focus", callback, true);
 		});
 	});
 
@@ -304,8 +304,8 @@ describe("captureModalFocus", function () {
 
 			appendToBody(root);
 			callback = function () {};
-			spyOn(window, "addEventListener");
-			spyOn(window, "removeEventListener");
+			spyOn(document, "addEventListener");
+			spyOn(document, "removeEventListener");
 
 		});
 
@@ -330,17 +330,17 @@ describe("captureModalFocus", function () {
 			captureModalFocus();
 
 			expect(state).toEqual({
-				eventListenerContext: window,
+				eventListenerContext: document,
 				eventListenerArguments: ["focus", jasmine.any(Function), true]
 			});
 		});
 
 		it("should release the previous modal capture", function () {
-			state.eventListenerContext = window;
+			state.eventListenerContext = document;
 			state.eventListenerArguments = ["focus", callback, true];
 			captureModalFocus(modal);
 
-			expect(window.removeEventListener).toHaveBeenCalledWith("focus", callback, true);
+			expect(document.removeEventListener).toHaveBeenCalledWith("focus", callback, true);
 		});
 	});
 });

@@ -58,9 +58,36 @@ function findFirstFocusableElement(element) {
 	return null;
 }
 
+// Find the first focusable element.
+// The candidates are the element and it's descendants.
+// The search is performed depth-first.
+function findLastFocusableElement(element) {
+	var children = element.children;
+	var length = children.length;
+	var child;
+	var focusableDescendant;
+
+	for (var i = length -1; i >= 0; i -= 1) {
+		child = children[i];
+
+		focusableDescendant = findLastFocusableElement(child);
+
+		if (focusableDescendant) {
+			return focusableDescendant;
+		}
+	}
+
+	if (isFocusable(element)) {
+		return element;
+	}
+
+	return null;
+}
+
 function focus(element) {
 	makeFocusable(element);
 	element.focus();
+	state.lastFocus = element;
 }
 
 function resolveFocus(parent, defaultFocus) {
@@ -70,20 +97,31 @@ function resolveFocus(parent, defaultFocus) {
 		focusElement = defaultFocus;
 	} else {
 		focusElement = findFirstFocusableElement(parent) || parent;
+
+		if (focusElement === state.lastFocus) {
+			focusElement = findLastFocusableElement(parent) || parent;
+		}
 	}
 
 	focus(focusElement);
 }
 
-function focusInElement(element) {
-	resolveFocus(element);
+function focusFirstInElement(element) {
+	var focusElement = findFirstFocusableElement(element) || element;
+	focus(element);
+}
+
+function focusLastInElement(element) {
+	var focusElement = findLastFocusableElement(element) || element;
+	focus(element);
 }
 
 // State is kept is these variables.
 // Since only one modal dialog can capture focus at a time the state is a singleton.
 var state = {
 	eventListenerArguments: null,
-	eventListenerContext: null
+	eventListenerContext: null,
+	lastFocus: null
 };
 
 function releaseModalFocus(focusElement) {
@@ -97,6 +135,7 @@ function releaseModalFocus(focusElement) {
 	// Reset the state object
 	state.eventListenerContext = null;
 	state.eventListenerArguments = null;
+	state.lastFocus = null;
 
 	if (focusElement) {
 		focusElement.focus();
@@ -105,7 +144,9 @@ function releaseModalFocus(focusElement) {
 
 // Keep focus inside the modal
 function restrictFocus(modal, focusedElement) {
-	if (!isAncestor(modal, focusedElement)) {
+	if (isAncestor(modal, focusedElement)) {
+		state.lastFocus = focusedElement;
+	} else {
 		resolveFocus(modal);
 	}
 }
@@ -133,7 +174,7 @@ function captureModalFocus(modal, focusElement) {
 	// The focus event does not bubble
 	// however it can be captured on an ancestor element
 	// by setting useCapture to true
-	var eventListenerContext = window;
+	var eventListenerContext = document;
 	var eventListenerArguments = ["focus", focusCallback, true];
 
 	// Save the eventListener data in the state object so it can be removed later
@@ -147,5 +188,6 @@ function captureModalFocus(modal, focusElement) {
 var focusManager = {
 	capture: captureModalFocus,
 	release: releaseModalFocus,
-	focusInElement: focusInElement
+	focusFirstInElement: focusFirstInElement,
+	focusLastInElement: focusLastInElement
 };
