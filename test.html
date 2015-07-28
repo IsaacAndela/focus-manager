@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Focus Manager</title>
+	<style>
+		button {
+			border: none;
+			background: #bada55;
+		}
+	</style>
+</head>
+<body>
+	<button>-1</button><button>-2</button>
+<div id="d">
+	<button>1</button><button>2</button>
+</div>
+	<script src="source/focusManager.js"></script>
+	<script>
+		focusManager.capture(d);
+	</script>
+</body>
+</html>

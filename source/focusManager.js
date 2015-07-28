@@ -133,7 +133,7 @@ function captureModalFocus(modal, focusElement) {
 	// The focus event does not bubble
 	// however it can be captured on an ancestor element
 	// by setting useCapture to true
-	var eventListenerContext = document;
+	var eventListenerContext = window;
 	var eventListenerArguments = ["focus", focusCallback, true];
 
 	// Save the eventListener data in the state object so it can be removed later
