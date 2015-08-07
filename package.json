@@ -1,16 +1,20 @@
 {
   "name": "focus-manager",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Accessible focus management made easy",
-  "keywords": ["accessibility", "a11y", "dialog", "modal"],
+  "keywords": [
+    "accessibility",
+    "a11y",
+    "dialog",
+    "modal"
+  ],
   "main": "focusManager.js",
   "mainMinified": "focusManager.min.js",
   "mainModuleName": "focusManager",
   "homepage": "http://isaacandela.github.io/focus-manager/",
   "bugs": {
-    "url": "http://isaacandela.github.io/focus-manager/",
-    "email": "git@isaacandela.nl",
-    "url": "http://isaacandela.nl"
+    "url": "http://isaacandela.nl",
+    "email": "git@isaacandela.nl"
   },
   "directories": {
     "test": "test",
