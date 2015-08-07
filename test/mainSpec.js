@@ -109,6 +109,45 @@ describe("captureModalFocus", function () {
 		});
 	});
 
+	describe("findLastFocusableElement", function () {
+		var root;
+		var div;
+		var span;
+		var p;
+		var button;
+		var input;
+
+		beforeEach(function () {
+			root = el("div");
+			div = el("div");
+			span = el("span");
+			p = el("p");
+			button = el("button");
+			input = el("input");
+		});
+
+		it("should do find the last element", function () {
+			root.appendChild(div);
+			root.appendChild(p);
+			p.appendChild(span);
+			span.appendChild(input);
+			root.appendChild(button);
+
+			expect(findLastFocusableElement(root)).toBe(button);
+		});
+
+		it("should be able to detect the root as a focusable element", function () {
+			root.appendChild(div);
+			root.appendChild(button);
+			root.appendChild(p);
+			p.appendChild(span);
+			span.appendChild(input);
+			p.tabIndex = 0;
+
+			expect(findLastFocusableElement(root)).toBe(input);
+		});
+	});
+
 	describe("focus", function () {
 		it("should focus an element", function () {
 			var div = el("div");
@@ -126,14 +165,17 @@ describe("captureModalFocus", function () {
 		var root;
 		var div;
 		var button;
+		var input;
 
 		beforeEach(function () {
 			root = el("div");
 			div = el("div");
 			button = el("button");
+			input = el("input");
 
 			root.appendChild(div);
 			div.appendChild(button);
+			root.appendChild(input);
 
 			appendToBody(root);
 		});
@@ -152,6 +194,14 @@ describe("captureModalFocus", function () {
 			resolveFocus(root);
 
 			expect(button).toBe(document.activeElement);
+		});
+
+		it("should focus the last focusable element", function () {
+			var defaultState = state;
+			state.lastFocus = button;
+			resolveFocus(root);
+
+			expect(input).toBe(document.activeElement);
 		});
 	});
 
@@ -222,6 +272,52 @@ describe("captureModalFocus", function () {
 			secondInsider.focus();
 			restrictFocus(modal, secondInsider);
 			expect(secondInsider).toBe(document.activeElement);
+		});
+	});
+
+	describe("focusFirstInElement", function () {
+		it("should focus the first focusable element", function () {
+			var root = el("div");
+			var firstButton = el("button");
+			var div = el("div");
+			var lastButton = el("button");
+
+			div.tabIndex = 0;
+
+			root.appendChild(firstButton);
+			root.appendChild(div);
+			div.appendChild(lastButton);
+
+			appendToBody(root);
+
+			focusFirstInElement(root);
+
+			expect(firstButton).toBe(document.activeElement);
+
+			removeFromBody(root);
+		});
+	});
+
+	describe("focusLastInElement", function () {
+		it("should focus the last focusable element", function () {
+			var root = el("div");
+			var firstButton = el("button");
+			var div = el("div");
+			var lastButton = el("button");
+
+			div.tabIndex = 0;
+
+			root.appendChild(firstButton);
+			root.appendChild(div);
+			div.appendChild(lastButton);
+
+			appendToBody(root);
+
+			focusLastInElement(root);
+
+			expect(lastButton).toBe(document.activeElement);
+
+			removeFromBody(root);
 		});
 	});
 
@@ -329,10 +425,8 @@ describe("captureModalFocus", function () {
 		it("should set the state object", function () {
 			captureModalFocus();
 
-			expect(state).toEqual({
-				eventListenerContext: document,
-				eventListenerArguments: ["focus", jasmine.any(Function), true]
-			});
+			expect(state.eventListenerContext).toBe(document);
+			expect(state.eventListenerArguments).toEqual(["focus", jasmine.any(Function), true]);
 		});
 
 		it("should release the previous modal capture", function () {

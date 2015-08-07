@@ -108,12 +108,12 @@ function resolveFocus(parent, defaultFocus) {
 
 function focusFirstInElement(element) {
 	var focusElement = findFirstFocusableElement(element) || element;
-	focus(element);
+	focus(focusElement);
 }
 
 function focusLastInElement(element) {
 	var focusElement = findLastFocusableElement(element) || element;
-	focus(element);
+	focus(focusElement);
 }
 
 // State is kept is these variables.
