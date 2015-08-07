@@ -10,9 +10,14 @@ This is a small Javascript library to help you with focus management for modal d
 ## Documentation
 
 
-### `focusManager.focusInElement(element)`
+### `focusManager.focusFirstInElement(element)`
 
 If the `element` is focusable it will be focused. Otherwise the first descendant that is focusable will be focused. If this fails the `element` itself will be made focusable and will be focused.
+
+
+### `focusManager.focusLastInElement(element)`
+
+The last descendant that is focusable will be focused. If this fails the `element` itself will be made focusable and will be focused.
 
 
 ### `focusManager.capture(modal, focusElement: optional)`
