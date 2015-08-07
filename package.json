@@ -6,12 +6,14 @@
     "accessibility",
     "a11y",
     "dialog",
-    "modal"
+    "modal",
+    "focus"
   ],
   "main": "focusManager.js",
   "mainMinified": "focusManager.min.js",
   "mainModuleName": "focusManager",
   "homepage": "http://isaacandela.github.io/focus-manager/",
+  "repository": "IsaacAndela/focus-manager",
   "bugs": {
     "url": "http://isaacandela.github.io/focus-manager/issues",
     "email": "git@isaacandela.nl"
