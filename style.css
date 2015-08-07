@@ -208,6 +208,7 @@ button:focus::after {
 	justify-content: center;
 	text-align: center;
 	transition: opacity 0.3s;
+	z-index: 5;
 }
 
 .modalDialog.is-opened {
