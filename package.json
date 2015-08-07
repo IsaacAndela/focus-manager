@@ -13,7 +13,7 @@
   "mainModuleName": "focusManager",
   "homepage": "http://isaacandela.github.io/focus-manager/",
   "bugs": {
-    "url": "http://isaacandela.nl",
+    "url": "http://isaacandela.github.io/focus-manager/issues",
     "email": "git@isaacandela.nl"
   },
   "directories": {
