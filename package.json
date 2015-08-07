@@ -18,6 +18,6 @@
   },
   "homepage": "https://github.com/IsaacAndela/focus-manager#readme",
   "dependencies": {
-    "focus-manager": "^0.1.1"
+    "focus-manager": "*"
   }
 }

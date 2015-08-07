@@ -12,24 +12,25 @@
 				<h1 class="pageTitle">Focus Manager</h1>
 				<p class="payoff">Accessible focus management made easy</p>
 			</header>
-			<section>
+			<section class="section">
 				<h2 class="sectionTitle">What is Focus Manager? ❡❧</h2>
 				<p>This is a small Javascript library to help you with focus management for modal dialogs and other content that is opened in the page. How you open or close these dialogs and other content is up to you, this library is just here to help you make your dialogs more accessible for keyboard users.</p>
 			</section>
-			<section>
+			<section class="section">
 				<h2 class="sectionTitle">Examples</h2>
 
-				<section>
-					<h3 class="subsectionTitle">Opening a modal dialog</h3>
-					<p>The first example is here to demonstrate the problem. It is all to easy to loose where the focus is without it being properly managed. Try it out.</p>
-					<div class="buttons buttons--spacious">
-						<button data-open-modal-dialog-without>Open modal dialog <em>without</em> focus capture</button>
-					</div>
-					<p>This example shows how focus can be managed effectively. See for yourself how much nicer it is.</p>
-					<div class="buttons buttons--spacious">
-						<button data-open-modal-dialog>Open modal dialog <em>with</em> focus capture</button>
-					</div>
 
+				<h3 class="subsectionTitle">Opening a modal dialog</h3>
+				<p>The first example is here to demonstrate the problem. It is all to easy to loose where the focus is without it being properly managed. Try it out.</p>
+				<div class="buttons buttons--spacious">
+					<button data-open-modal-dialog-without>Open modal dialog <em>without</em> focus capture</button>
+				</div>
+				<p>This example shows how focus can be managed effectively. See for yourself how much nicer it is.</p>
+				<div class="buttons buttons--spacious">
+					<button data-open-modal-dialog>Open modal dialog <em>with</em> focus capture</button>
+				</div>
+				<div class="codeBlock">
+					<h4 class="codeBlock-title">The code</h4>
 					<code>
 <pre>var openedClass = "is-opened";
 
@@ -68,35 +69,92 @@ closeButton.addEventListener("click", function (evnt) {
 	<span class="highlightCode">focusManager.release(openButton);</span>
 });</pre>
 					</code>
-					<section role="dialog" data-dialog-without class="modalDialog">
-						<div class="modalDialog-content">
-							<h4 class="sectionTitle">Oh, hi</h4>
+				</div>
+				<section role="dialog" data-dialog-without class="modalDialog">
+					<div class="modalDialog-content">
+						<h4 class="sectionTitle">Oh, hi</h4>
 
-							<p>Try tabbing thought and see how easy it is to loose where your focus is. This is very annoying for keyboard users. Help them out and use Focus Manager.</p>
-							<div class="buttons">
+						<p>Try tabbing thought and see how easy it is to loose where your focus is. This is very annoying for keyboard users. Help them out and use Focus Manager.</p>
+						<div class="buttons">
 
-								<button data-close-modal-dialog-without>Ok</button>
-								<button data-close-modal-dialog-without>Cancel</button>
-							</div>
+							<button data-close-modal-dialog-without>Ok</button>
+							<button data-close-modal-dialog-without>Cancel</button>
 						</div>
-					</section>
-					<section role="dialog" data-dialog class="modalDialog">
-						<div class="modalDialog-content">
-							<h4 class="sectionTitle">Hi there</h4>
-
-							<p>Try tabbing thought, focus stays within the dialog. after closing it with one of the buttons below, the focus will return to the open button.</p>
-							<div class="buttons">
-
-								<button data-close-modal-dialog>Ok</button>
-								<button data-close-modal-dialog>Cancel</button>
-							</div>
-						</div>
-					</section>
+					</div>
 				</section>
+				<section role="dialog" data-dialog class="modalDialog">
+					<div class="modalDialog-content">
+						<h4 class="sectionTitle">Hi there</h4>
+
+						<p>Try tabbing thought, focus stays within the dialog. after closing it with one of the buttons below, the focus will return to the open button.</p>
+						<div class="buttons">
+
+							<button data-close-modal-dialog>Ok</button>
+							<button data-close-modal-dialog>Cancel</button>
+						</div>
+					</div>
+				</section>
+
 			</section>
-			<section>
+			<section class="section">
+				<h2 class="sectionTitle">Installation</h2>
+
+				<p>The easiest way to install Focus Manager is npm, execute the following command in your project directory:</p>
+				<code>
+					<pre>npm install --save focus-manager</pre>
+				</code>
+				<p>Alternatively you can download the source manually from GitHub. There is a <a href="https://github.com/IsaacAndela/focus-manager/blob/master/focusManager.js">development build</a> and a <a href="https://github.com/IsaacAndela/focus-manager/blob/master/focusManager.min.js">minified build</a>.</p>
+			</section>
+			<section class="section">
 				<h2 class="sectionTitle">Documentation</h2>
+
+				<h3 class="apiTitle"><code class="apiTitle-code">focusManager.focusFirstInElement(element)</code></h3>
+
+				<div class="apiExplanation">
+
+					<p>If the <code>element</code> is focusable it will be focused. Otherwise the first descendant that is focusable will be focused. If this fails the <code>element</code> itself will be made focusable and will be focused.</p>
+				</div>
+
+				<h3 class="apiTitle"><code class="apiTitle-code">focusManager.focusLastInElement(element)</code></h3>
+
+				<div class="apiExplanation">
+
+					<p>The last descendant that is focusable will be focused. If this fails the <code>element</code> itself will be made focusable and will be focused.</p>
+				</div>
+
+				<h3 class="apiTitle"><code class="apiTitle-code">focusManager.capture(modal, focusElement: optional)</code></h3>
+
+				<div class="apiExplanation">
+
+					<p><code>focusManager.capture</code> will only allow <code>modal</code> and it's descendants to be focused. Whenever an element outside <code>modal</code> receives focus, <code>modal</code> or the first focusable descendant inside <code>modal</code> will be focused. Thus helping keyboard users to stay inside the <code>modal</code> until it is dismissed.</p>
+					<p>Optionally a <code>focusElement</code> can be provided. This element will receive the initial focus instead of the first focusable descendant. If no <code>focusElement</code> is provided <code>focusManager.focusInElement(modal)</code> will be used to determine which element will receive the initial focus.</p>
+
+					<p><code>focusManager.capture</code> will keep listening for focus events until it is released.</p>
+
+					<p>This function should be used when opening a modal dialog.</p>
+				</div>
+
+
+				<h3 class="apiTitle"><code class="apiTitle-code">focusManager.release(focusElement: optional)</code></h3>
+
+				<div class="apiExplanation">
+
+					<p><code>focusManager.release</code> will release the captured focus and allow elements to be focused as they normally would be.</p>
+					<p>Optionally a <code>focusElement</code> can be provided. This element will receive focus when this function is executed.</p>
+
+					<p>This function should be used when closing a modal dialog.</p>
+				</div>
+
+
+
 			</section>
+			<section class="section">
+				<h2 class="sectionTitle">License</h2>
+				<p>Focus Manager is licensed under the ISC license. See <a href="https://github.com/IsaacAndela/focus-manager/blob/master/LICENSE">the license file</a> for details.</p>
+			</section>
+			<footer class="pageFooter">
+				<p class="pageFooter-text">The source code can be found on <a href="https://github.com/IsaacAndela/focus-manager/">GitHub</a></p>
+			</footer>
 		</article>
 	</main>
 	<script src="node_modules/focus-manager/focusManager.js"></script>
