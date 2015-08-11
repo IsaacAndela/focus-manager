@@ -54,8 +54,8 @@ a:active {
 .pageHeader {
 	position: relative;
 	padding: 5em 0;
-	border-top: 3px double hsl(0, 0%, 20%);
-	border-bottom: 3px double hsl(0, 0%, 20%);
+	border-top: 3px double hsl(0, 0%, 50%);
+	border-bottom: 3px double hsl(0, 0%, 50%);
 	max-width: 18em;
 	margin: 9em auto;
 }
@@ -63,7 +63,7 @@ a:active {
 .pageFooter {
 	position: relative;
 	padding: 5em 0 0 0;
-	border-top: 3px double hsl(0, 0%, 20%);
+	border-top: 3px double hsl(0, 0%, 50%);
 	max-width: 18em;
 	margin: 6em auto;
 }
@@ -108,7 +108,6 @@ a:active {
 .subsectionTitle {
 	line-height: 1.2;
 	text-align: center;
-	color: hsl(0, 0%, 20%);
 }
 
 .pageTitle {
@@ -188,7 +187,7 @@ button:focus::after {
 
 .section + .section {
 	position: relative;
-	border-top: 1px solid hsl(0, 0%, 20%);
+	border-top: 1px solid hsl(0, 0%, 50%);
 	margin-top: 3.2em;
 }
 
@@ -284,7 +283,7 @@ code > pre {
 	margin: 3.5em 0;
 	padding: 2em 0;
 	overflow-x: auto;
-	border: 1px hsl(0, 0%, 20%);
+	border: 1px solid hsl(0, 0%, 50%);
 	border-style: solid none;
 }
 
