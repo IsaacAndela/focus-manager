@@ -205,33 +205,6 @@ describe("captureModalFocus", function () {
 		});
 	});
 
-	describe("resolveFocus", function () {
-		var root;
-		var div;
-		var button;
-
-		beforeEach(function () {
-			root = el("div");
-			div = el("div");
-			button = el("button");
-
-			root.appendChild(div);
-			div.appendChild(button);
-
-			appendToBody(root);
-		});
-
-		afterEach(function () {
-			removeFromBody(root);
-		});
-
-		it("should focus the defaultFocus element", function () {
-			resolveFocus(root);
-
-			expect(button).toBe(document.activeElement);
-		});
-	});
-
 	describe("restrictFocus", function () {
 		var root;
 		var modal;
