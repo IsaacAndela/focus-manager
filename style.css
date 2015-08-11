@@ -1,5 +1,6 @@
 html {
 	font-size: 118.75%;
+	background-color: hsl(0, 100%, 100%);
 }
 
 body {
@@ -7,11 +8,23 @@ body {
 	max-width: 40em;
 	line-height: 1.6;
 	margin: 0 auto;
-	padding: 0 1em;
+	padding: 1px 1em;
 	display: block;
-	color: hsl(0, 0%, 30%);
+	color: hsl(0, 0%, 33%);
+	background-color: hsl(9, 100%, 99%);
 }
-
+@media (min-width: 35em) {
+	body {
+		padding-left: 2em;
+		padding-right: 2em;
+	}
+}
+@media (min-width: 45em) {
+	body {
+		padding-left: 3em;
+		padding-right: 3em;
+	}
+}
 p {
 	margin: 0;
 }
@@ -23,14 +36,14 @@ p + p {
 a {
 	color: inherit;
 	text-decoration: none;
-	border-bottom: hsl(0, 85%, 50%) 1px solid;
+	border-bottom: hsl(0, 82%, 48%) 1px solid;
 	transition: color 0.3s;
 }
 
 a:hover,
 a:focus,
 a:active {
-	color: hsl(0, 85%, 50%);
+	color: hsl(0, 82%, 48%);
 }
 
 :focus {
@@ -65,8 +78,8 @@ a:active {
 	font-size: 2em;
 	text-align: center;
 	width: 1em;
-	background: hsl(0, 100%, 100%);
-	color: hsl(0, 85%, 50%);
+	background: hsl(9, 100%, 99%);
+	color: hsl(0, 82%, 48%);
 	line-height: 0.7;
 	margin-bottom: -0.36em;
 }
@@ -105,6 +118,7 @@ a:active {
 	text-align: center;
 	font-weight: normal;
 	margin: 0;
+	color: black;
 }
 
 .sectionTitle {
@@ -112,7 +126,7 @@ a:active {
 	text-transform: uppercase;
 	letter-spacing: 0.05em;
 	font-weight: normal;
-	color: hsl(0, 85%, 50%);
+	color: hsl(0, 82%, 48%);
 	margin: 4em 0 2em 0;
 }
 
@@ -120,7 +134,7 @@ a:active {
 	font-size: 1em;
 	font-weight: normal;
 	font-style: italic;
-	color: hsl(0, 85%, 50%);
+	color: black;
 }
 
 .payoff {
@@ -128,7 +142,7 @@ a:active {
 	font-style: italic;
 	font-size: 0.8em;
 	text-align: center;
-	color: hsl(0, 85%, 50%);
+	color: hsl(0, 82%, 48%);
 	margin: 0.5em 0 0 0;
 }
 
@@ -152,7 +166,7 @@ button {
 	color: white;
 	text-transform: uppercase;
 	letter-spacing: 0.07em;
-	color: hsl(0, 85%, 50%);
+	color: hsl(0, 82%, 48%);
 	margin: 0 auto;
 
 	border: none;
@@ -187,8 +201,8 @@ button:focus::after {
 	font-size: 0.6em;
 	text-align: center;
 	width: 1em;
-	background: hsl(0, 100%, 100%);
-	color: hsl(0, 85%, 50%);
+	background: hsl(9, 100%, 99%);
+	color: hsl(0, 82%, 48%);
 	line-height: 0.7;
 	margin-bottom: -0.36em;
 	top: 0;
@@ -234,12 +248,13 @@ button:focus::after {
 	text-transform: uppercase;
 	font-size: 0.5em;
 	width: -webkit-max-content;
-	background-color: hsl(0, 100%, 100%);
+	background-color: hsl(9, 100%, 99%);
+	color: black;
 	padding: 0 0.6em;
 }
 
 .highlightCode {
-	color: hsl(0, 85%, 50%);
+	color: hsl(0, 82%, 48%);
 }
 
 .codeComment {
@@ -251,6 +266,7 @@ button:focus::after {
 	line-height: 1.2;
 	font-size: 1.2em;
 	margin: 1.6em 0 0.9em 0;
+	color: black;
 }
 
 .apiTitle-code {
