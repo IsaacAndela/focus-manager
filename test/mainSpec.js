@@ -395,11 +395,17 @@ describe("captureModalFocus", function () {
 			expect(insider).toBe(document.activeElement);
 		});
 
-		it("should set the state object", function () {
+		it("should set the state object with document when no backgroundElement is specified", function () {
 			captureModalFocus();
 
 			expect(state.eventListenerContext).toBe(document);
 			expect(state.eventListenerArguments).toEqual(["focus", jasmine.any(Function), true]);
+		});
+
+		it("should set the state object to backgroundElement when it is specified", function () {
+			captureModalFocus(modal, insider, root);
+
+			expect(state.eventListenerContext).toBe(root);
 		});
 
 		it("should release the previous modal capture", function () {
