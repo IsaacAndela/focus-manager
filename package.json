@@ -23,7 +23,8 @@
     "source": "source"
   },
   "scripts": {
-    "test": "gulp test"
+    "test": "gulp test",
+    "build": "gulp"
   },
   "files": [
     "focusManager.js",

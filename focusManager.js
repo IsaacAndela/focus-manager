@@ -162,7 +162,8 @@ function restrictFocus(modal, focusedElement) {
 
 // modal, the element in which to contain focus
 // focusElement (optional), the element inside the modal to focus when opening
-function captureModalFocus(modal, focusElement) {
+// backgroundElement (optional), All focus events within this element are redirected to the modal. Defaults to document
+function captureModalFocus(modal, focusElement, backgroundElement) {
 
 	// without a modal there is nothing to capture
 	if (!modal) {
@@ -183,7 +184,7 @@ function captureModalFocus(modal, focusElement) {
 	// The focus event does not bubble
 	// however it can be captured on an ancestor element
 	// by setting useCapture to true
-	var eventListenerContext = document;
+	var eventListenerContext = backgroundElement || document;
 	var eventListenerArguments = ["focus", focusCallback, true];
 
 	// Save the eventListener data in the state object so it can be removed later
