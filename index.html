@@ -122,12 +122,13 @@ closeButton.addEventListener("click", function (evnt) {
 					<p>The last descendant that is focusable will be focused. If this fails the <code>element</code> itself will be made focusable and will be focused.</p>
 				</div>
 
-				<h3 class="apiTitle"><code class="apiTitle-code">focusManager.capture(modal, focusElement: optional)</code></h3>
+				<h3 class="apiTitle"><code class="apiTitle-code">focusManager.capture(modal, focusElement: optional, backgroundElement: optional)</code></h3>
 
 				<div class="apiExplanation">
 
 					<p><code>focusManager.capture</code> will only allow <code>modal</code> and it's descendants to be focused. Whenever an element outside <code>modal</code> receives focus, <code>modal</code> or the first focusable descendant inside <code>modal</code> will be focused. Thus helping keyboard users to stay inside the <code>modal</code> until it is dismissed.</p>
 					<p>Optionally a <code>focusElement</code> can be provided. This element will receive the initial focus instead of the first focusable descendant. If no <code>focusElement</code> is provided <code>focusManager.focusInElement(modal)</code> will be used to determine which element will receive the initial focus.</p>
+					<p>Optionally a <code>backgroundElement</code> can be provided. It defaults to <code>document</code>. Any time focus gets set inside this element focus gets reset to the <code>modal</code> element. Note, the <code>modal</code> element can be a descendant of the <code>backgroundElement</code></p>
 
 					<p><code>focusManager.capture</code> will keep listening for focus events until it is released.</p>
 
