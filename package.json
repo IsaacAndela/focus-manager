@@ -28,9 +28,7 @@
   },
   "files": [
     "focusManager.js",
-    "focusManager.min.js",
-    "LICENCE",
-    "README.md"
+    "focusManager.min.js"
   ],
   "author": {
     "name": "Isaac Andela",
